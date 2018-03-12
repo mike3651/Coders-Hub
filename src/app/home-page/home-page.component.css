@@ -1,0 +1,15 @@
+/**
+ * Simple styling for the home page.
+ *
+ * @author Michael Wilson
+ * @version 1.0.0 */
+
+li:hover {
+    cursor: pointer;
+    background-color: rgb(241, 194, 194);
+}
+
+#homepage {
+    text-align: center;
+}
+

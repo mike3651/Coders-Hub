@@ -1,0 +1,16 @@
+<!-- 
+  Author: Michael Wilson
+  Version: 1.0.0
+  Description:
+    The idea of this page is that the user will be able to select a 
+    plethera of options to choose from when it comes to the game play.
+-->
+
+<div class="container" id="homepage">
+  <h1>Welcome to the Coder Hub</h1>
+  <ul class="list-group">
+    <li *ngFor="let option of homePageOptions" (click)="actOnChoice(option.function)" class="list-group-item">
+      {{option.title}}
+    </li>
+  </ul>
+</div>

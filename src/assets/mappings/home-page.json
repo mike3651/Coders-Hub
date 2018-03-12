@@ -1,0 +1,16 @@
+{
+    "choices": [
+        {
+            "title":"Continue Game",
+            "function":"loadGame"
+        },
+        {
+            "title":"New Game",
+            "function":"startNewGame"
+        },
+        {
+            "title":"Options",
+            "function":"options"
+        }
+    ]
+}
