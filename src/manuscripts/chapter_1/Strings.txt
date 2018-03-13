@@ -1,0 +1,33 @@
+{{Intro}}
+Welcome great warrior to the domain of Strings where seekers from far and why to find the true meaning of concatenation.
+By now you must be wondering, what exactly is a String? Well sit tight and I'll tell you all that you need to know.
+
+{{Description}}
+Strings are a simple data structure which are formed from the gathering of several different datatypes put together.
+To start creating a string you must use a double quote("), but it's very important that you end the string with another double quote or else you'll be in big trouble! ):>
+Once you have started the usage of a single quote you may put nearly anything you want after it until you end the sequence with a tailing double quote.
+Here's an example of a string: var str = "testString0"
+This will generate a string and store it in a box called str for later use.
+Now I did say that you can put nearly anything that you want after the first quote but you must be weary of the following sneaky escape sequences for they have tripped up even the most revered programmers.
+
+{{Sequences}}
+The sequences that you'll most likely encounter are: {
+\\ | backslash
+\' | single quote
+\" | double quote
+\n | new line
+\t | tab over
+}
+These sequences can also be your friend to!
+Now that we have covered some of the basic sequences and how to construct a string let's arm you with the knowledge, of methods & properties, that you'll need to succeed in combat! >:)
+
+{{Methods & Properties}}
+length | How many characters are in the string.
+charAt(index) | The character, in a sequence, at a particular index.
+indexOf(value) | The last index of which the value is found in the sequence.
+startsWith(seq) | Returns true if the string starts with the given sequnce of characters, false otherwise.
+endsWith(seq) | Returns true if the string ends with the given sequence of characters, false otherwise.
+split(regex) | Splits a string into an array of smaller strings by the given regex.
+substr(start, count) | Returns a new string which only contains characters from the start index to the start + count index.
+
+
