@@ -1,6 +1,6 @@
 /**
  * @author Michael Wilson
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 import { Component, OnInit } from '@angular/core';
@@ -146,5 +146,111 @@ export class StringsComponent implements OnInit {
       }
     }
     return unique;
+  }
+
+  /**
+   * @method isPalindrome
+   * @description Function that checks to see if a string is a palindrome. 
+   * 
+   * @param str The string to check.
+   * @return True if the string is a palindrome, false otherwise. 
+   */
+  private isPalindrome(str: string): boolean {
+    for(var i = 0; i < str.length/2; i++) {
+      if(str.charAt(i) != str.charAt(str.length - 1 - i)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * @method canBePalindrome
+   * @description Given a string S, check if it's possible to transform into a palindrome.
+   * 
+   * @param str The string to check.
+   * @return true if str can be a palindrome, false otherwise.
+   */  
+  private canBePalindrome(str: string): boolean {
+    let ASCII: number[] = new Array(256).fill(0);
+    let oddCount: number = 0;
+
+    // store the frequencies of the characters
+    for(let i = 0; i < str.length; i++) {
+      ASCII[str.charCodeAt(i)]++;
+    }
+
+    // Check the ASCII values to see if the string is a palindrome
+    for(let i = 0; i < ASCII.length; i++) {
+      if(ASCII[i] % 2 != 0) {
+        oddCount++;
+        if(oddCount > 1) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  /**
+   * @method areAnagrams
+   * @description Given strings A & B, check to see if they are anagrams of one another.
+   * 
+   * @param A The first string.
+   * @param B The second string.
+   * @return True if they are anagrams of one another, false otherwise.
+   */
+  private areAnagrams(A: string, B: string): boolean {
+    if(A.length != B.length) {
+      return false;
+    }
+    
+    let ASCII_1: number[] = new Array(256).fill(0);
+    let ASCII_2: number[] = new Array(256).fill(0);
+    
+    for(let i = 0; i < A.length; i++) {
+      ASCII_1[A.charCodeAt(i)]++;
+      ASCII_2[B.charCodeAt(i)]++;
+    }
+
+    for(let i = 0; i < ASCII_1.length; i++) {
+      if(ASCII_1[i] != ASCII_2[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * @method kthNonRepeating
+   * @description Given a string S & a number k, find the kth number in S that doesn't repeat
+   * 
+   * @param str The string to iterate through.
+   * @param k The non repeating character we are looking for.
+   */
+  private kthNonRepeating(str: string): string {
+    let charSequence: any[] = []; 
+
+    // build up a map of characters and their frequencies
+    for(let i = 0; i < str.length; i++) {
+      if(charSequence.find(x => x.character == str.charAt(i) != undefined)) {
+        charSequence.find(x => x.character == str.charAt(i)).frequency++;
+      } else {
+        charSequence.push({
+          'character':str.charAt(i),
+          'frequency':1
+        });
+      }
+    }
+
+    let nonRepeatCount: number = 0;
+    // traverse through the map and find the kth character with a frequency of 1
+    for(let i = 0; i < charSequence.length; i++) {
+      if(charSequence[i].frequency == 1) {
+        ++nonRepeatCount;
+        return charSequence[i].character;
+      }
+    }
+    return "Could not find the character ):>";
   }
 }
