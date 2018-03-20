@@ -253,4 +253,87 @@ export class StringsComponent implements OnInit {
     }
     return "Could not find the character ):>";
   }
+
+  /**
+   * @method makeAnagrams
+   * @description Given strings A & B, find the minimum number of characters to remove from each
+   * string in order to make them anagrams.
+   * 
+   * @param a The first string.
+   * @param b The second string.
+   * @return The number of characters needed to be removed from A & B.
+   */
+  private makeAnagrams(a:string, b:string): any {
+    let returnObject: any = [];
+    let aFrequency = new Array(256).fill(0);
+    let bFrequency = new Array(256).fill(0);
+    for(let i = 0; i < a.length; i++) {
+      aFrequency[a.charCodeAt(i)]++;
+    }
+
+    for(let i = 0; i < b.length; i++) {
+      bFrequency[b.charCodeAt(i)]++;
+    }
+
+    let totalToRemove: number = 0;
+
+    for(let i = 0; i < 256; i++) {
+      if(aFrequency[i] < bFrequency[i]) {
+        totalToRemove++;
+        returnObject.push({
+          'character': String.fromCharCode(i),
+          'From A': 0,
+          'From B': bFrequency[i] - aFrequency[i]
+        });
+      } else if(aFrequency > bFrequency[i]) {
+        totalToRemove++;
+        returnObject.push({
+          'character': String.fromCharCode(i),
+          'From A': aFrequency[i] - bFrequency[i],
+          'From B': 0
+        });
+      }
+    }
+
+    return returnObject.push({ 
+      'Minimum characters to remove' : totalToRemove
+    });
+  }
+
+  /**
+   * @method maxInnerPalindrome
+   * @description Given a string S, find the largest palindrome in it.
+   * 
+   * @param str The string to iterate through.
+   * @return The largest palindrome in the string
+   */
+  private maxInnerPalindrome(str: string): string {
+    let returnString: string = ""; let maxLength: number = 0;
+    let low: number = 0; let high: number = 0;
+    for(let i = 0; i < str.length; i++) {
+      low = i - 1;
+      high = i;
+      while(low >= 0 && high < str.length && str[low] == str[high]) {
+        if(high - low  + 1> maxLength) {
+          maxLength = high - low + 1;
+          returnString = str.substring(low, high);
+        }
+        low--;
+        high++;
+      }
+
+      low = i - 1;
+      high = i + 1;
+      while(low >= 0 && high < str.length && str[low] == str[high]) {
+        if(high - low  + 1> maxLength) {
+          maxLength = high - low + 1;
+          returnString = str.substring(low, high);
+        }
+        low--;
+        high++;
+      }
+      
+    }
+
+  }
 }
