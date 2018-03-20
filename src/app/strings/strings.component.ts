@@ -332,8 +332,7 @@ export class StringsComponent implements OnInit {
         low--;
         high++;
       }
-      
     }
-
+    return returnString;
   }
 }
